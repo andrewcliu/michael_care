@@ -1,0 +1,17 @@
+<h1 class='title'><%= params[:action] == 'new' ? "New #{this.to_s}" : "Edit #{this.to_s}" %></h1>
+<%= bootstrap_form_for(params[:action]=='new' ? this.new : this=this.find(params[:id])) do |f| %>
+	<% this.form_field.each do |e| %>
+		<% unless e.match(/id/) %>
+			<% if e.include? 'date' %>
+				<%= f.date_field e %>
+			<% else %>
+				<%= f.text_field e %>
+			<% end %>
+		<% end %>
+	<% end %>
+	<% if params[:action] == 'new' %>
+		<%= f.submit "Create #{this.to_s}", :class=>'btn btn-primary btn-md' %>
+	<% elsif params[:action] == 'edit' %>
+		<%= f.submit 'Edit', :class=>'btn btn-primary btn-md' %>
+	<% end %>
+<% end %>

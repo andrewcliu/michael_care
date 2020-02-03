@@ -1,0 +1,143 @@
+<!-- <div class="homepage-hero-module"> -->
+    <!-- <div class="video-container"> -->
+      <!-- <div class="filter"></div> -->
+
+      <%= video_tag('Rainy_Street.mp4', style:'width:100vw;height:100%;', :autoplay => true, :loop => true) %>
+ <!--      <div class="poster hidden">
+        <%#= image_tag('Rainy_Street.jpg') %>
+      </div> -->
+    <!-- </div> -->
+<!-- </div> -->
+<div id="header">
+	<div>
+		<h1 class='title'>
+			C.A.R.E
+		</h1>
+		<h3 class='subtitle'>
+			Community Advocates Reaching Everyone
+		</h3><br>
+		<%= link_to 'Donate on Paypal', "https://www.paypal.me/communityadvocates", :class=>'btn btn-lg btn-primary' %>
+	</div>
+</div>
+
+<div class="donate">
+	<div class='row'>
+		<div class='col-sm-12 text-center'>
+			<h4 class="title upcase">Donate to our cause!</h4><br>
+			<%= link_to 'Donate on Paypal', "https://www.paypal.me/communityadvocates", :class=>'btn btn-primary' %>
+<!-- 			<button class="btn btn-outline-primary">
+				Donate on PayPal
+			</button> -->
+			<p class='italics' style='margin:1rem 0 1rem 0;'>
+
+				Every dollar helps our non-profit in advancing our cause and helping people of color.
+			</p>
+		</div>
+	</div>	
+</div>
+
+<div id="about">
+	<div class='row' id='aboutContainer'>
+		<div class='col-sm-12 text-center'>
+			<p class=''><span class='italics'>what is</span><br>
+				<span class='title upcase'>c.a.r.e</span>
+			</p>
+		</div>
+		<div class='col-sm-12'>
+			<h3 class="subtitle">Our Mission:</h3>
+			<p>
+				Giving a voice to the voiceless and advocating for those who need and want Advocacy
+			</p>
+		</div>
+		<div class='col-sm-7'>
+			<h3 class="subtitle">Our Objective & Goals:</h3>
+			<ol>
+				<li>Advocating for women of color. Raise money for lawyers to help victims of domestic violence and making a support system, helping to lower infant mortality rate in the African American community. Having yes means yes classes for men. And having classes for men to understand they can handle issues without being physically verbally or emotional abusive. And classes for women to teach them to identify a toxic situation and different way to get out, or how to get help if they are stuck in a toxic situation. <br></li>
+				<li>
+					Advocating for women’s health. African American women had substantially more fibroids then white women(9.9 vs. 4.5) ( https://www.ncbi.nlm.nih.gov/pubmed/23199610) advocating alternative treatment to cut down the high numbers of hysterectomies  and the African American communities. African American women are the most likely to have hysterectomies. (https://www.ncbi.nlm.nih.gov/pubmed/23199610) knowing and understanding that I am/we are not doctors not have any license to practice medicine nor diagnose. We will go before their doctors with the client present and a consent form filled out with a release of information. Alternative treatments that will be advocated for via asking the doctor if they were done, why or why not, will include but not limited to Utero-ovarian Anastomoses, and tranexamic acid, as well as prevention. After which if none can be done or worked advocate for a 2nd opinion and then let them choose and give them support <br>
+				</li>
+				<li>
+					Advocating for public health, proper eating. Having a person that is license or trained in nutrition come and teach healthy eating. I myself will hold cooking classes on how to eat tasty vegetarian, low sodium meals on a budget. <br>
+				</li>
+				<li>
+					Advocating for researching and understanding to become more well informed and able to make informed decision via the scientific method. a lot of people say that people of color need to be educated. I find this demeaning and offensive. Most people may not have a formal education but still are educated. I say reeducation is needed. To help people relearn things forgotten, and unlearn thing that are wrong. To do this we will host classes on many things from mate to basic sciences to higher lever stuff. And allow free thought while engorging new ideas <br>
+				</li>
+				<li> Advocating for the youth get into politics. Have youth (12-17) meet local politicians </li>
+				<li> hopefully in the future open up an education clinic where we can heal and train at the same time with the goal that by the end of 6 month to a year a young person can go into the work force without here <br></li>
+				<li> advocating for mental health, mental health awareness, and job training for people with mental illness. <br></li>
+				<li> Advocating for legal representation for the mentally ill <br></li>
+			</ol>
+		</div>
+		<div class='col-sm-5 text-center'>
+			<%= image_tag('mike.jpg', style:'width:100%;') %>
+		</div>
+	</div>
+</div>
+<div class="donate">
+	<div class='row'>
+		<div class='col-sm-12 text-center'>
+			<h4 class="title upcase">Help us with our cause!</h4><br>
+			<%= link_to 'Volunteer', 'https://docs.google.com/document/d/1DMN3Mma_CUe0Ngi8gEN9Q_YCEOjd8ERl6TXkH2YhGeU/edit?usp=drivesdk&fbclid=IwAR2ec7MXfk1eJVSEKv0uNNa_Z-rUqP06TVN1E09jrvf7J3E7G2cThDUtCZI', class:'btn btn-primary' %>
+			<br><br>
+			<p class='italics'>
+
+				Not everything is monetary. <br> If you wish to share C.A.R.E's philosophy and mission with the world, feel free to drop us a note!
+			</p>
+		</div>
+	</div>	
+</div>
+<div id="event">
+	<div class='text-center'>
+		<p class='italics'>upcoming</p>
+		<h2 class='title upcase'>
+			c.a.r.e events
+		</h2>
+	</div>
+	<div class='row'>
+		<div class='col-sm-12'>
+			<%= month_calendar events:Event.all.each do |date,obj| %>
+				<%= month_date(date) %><br>
+			  <%#= date %>
+			  <% if obj.present? %>
+			  	<a data-toggle="modal" data-target="#eventModal<%=obj.first.id%>">
+			  		<span class='italics'><%= obj.first.title %></span>
+			  	</a>
+			  <% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<% Event.all.each do |e| %>
+<div class="modal fade" id="eventModal<%=e.id%>" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title title" id="eventModalLabel"><%= e.title %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<table class="table table-sm borderless">
+      		<tr>
+      			<td><b>Description:</b></td>
+   					<td><%= e.description %></td>
+      		</tr>
+      		<tr>
+      			<td><b>Start Date:</b></td>
+      			<td><%= e.start_date %></td>
+      		</tr>
+      		<tr>
+      			<td><b>End Date:</b></td>
+      			<td><%= e.end_date %></td>
+      		</tr>
+      	</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

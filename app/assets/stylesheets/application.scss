@@ -1,0 +1,148 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require simple_calendar
+ *= require_self
+ */
+
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "rails_bootstrap_forms";
+@import url('https://fonts.googleapis.com/css?family=Lalezar|Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Viga&display=swap');
+*{
+	font-family: 'Lato', sans-serif;
+}
+.calendar-heading{
+	text-align:center!important;
+	background-color:#007BFF;
+	.calendar-title{
+		font-weight:600;
+		font-size:1.5rem;
+		color:white;
+	}
+}
+a{
+	color:#FFF;
+}
+.title{
+	font-family: 'Viga', sans-serif;
+}
+.subtitle{
+	/*font-family: 'Ma Shan Zheng', cursive;*/
+	font-family: 'Oswald', sans-serif;
+}
+.italics{
+	font-style: italic;
+}
+.upcase{
+	text-transform: uppercase;
+}
+#navBar{
+	z-index:9999;
+	.nav-link{
+		color:#FFF!important;
+	}
+}
+#header{
+	/*background-image: asset-url('bg-masthead.jpg');*/
+	position: absolute;
+	top:0;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height:100vh;
+	width:100vw;
+	color:#FFF;
+	text-shadow: 1px 1px 1px #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	.title{
+		font-size:7.5rem;
+		font-family: 'Lalezar', cursive!important;
+
+	}
+}
+
+.donate{
+	margin-top:-1rem;
+	padding:25px;
+	background-color:#011;
+	display: flex;
+	color:#FFF;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+#about{
+	/*background-image: asset-url('bg-callout.jpg');*/
+	/*background-size: cover;*/
+	/*background-position: center;*/
+	padding:35px;
+	/*height:75vh;*/
+	#aboutContainer{
+		/*background-color:#FFF;*/
+		/*opacity:.8;*/
+		border:2px double #888;
+		padding: 35px;
+		border-radius:15px;
+		img{
+			box-shadow:1px 1px 1px #888;
+			border-radius:5px;
+		}
+/*		ol li{
+			line-height: 150%;
+		}*/
+	}
+	.title{
+		font-size:3rem;
+	}
+}
+
+.borderless{
+	tr,td{
+		border:none!important;
+	}
+}
+
+#event{
+	background-color:#EEE;
+	padding:35px;
+	.title{
+		font-size:3rem;
+	}
+	.italics{
+		transition:all 150ms ease;
+	}
+	.italics:hover{
+		color:blue;
+	}
+}
+#subfooter{
+	background-color:#011;
+	padding:25px;
+}
+#footer{
+	padding:25px;
+	background-color:#000;
+	color:#FFF;
+}
+
+#admins_page{
+	height:100vh;
+}

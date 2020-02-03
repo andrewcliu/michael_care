@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= biz_name %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<nav class="navbar navbar-expand-lg navbar-secondary bg-dark" id='navBar'>
+  	  <a class="navbar-brand title" href="#"><%= biz_name %></a>
+  	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  	    <span class="navbar-toggler-icon"></span>
+  	  </button>
+  	
+  	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  	    <ul class="navbar-nav mr-auto">
+  	      <li class="nav-item active">
+  	        <%= link_to '<i class="fas fa-home"></i> Home'.html_safe, root_path, :class=>'nav-link title' %> <span class="sr-only">(current)</span>
+  	      </li>
+
+  	      <li class="nav-item">
+  	        <a class="nav-link title" href="https://www.paypal.me/communityadvocates"><i class="fab fa-paypal"></i> Donate</a>
+  	      </li>
+  	      <li class="nav-item">
+  	        <a class="nav-link title" href="https://docs.google.com/document/d/1DMN3Mma_CUe0Ngi8gEN9Q_YCEOjd8ERl6TXkH2YhGeU/edit?usp=drivesdk&fbclid=IwAR2ec7MXfk1eJVSEKv0uNNa_Z-rUqP06TVN1E09jrvf7J3E7G2cThDUtCZI"><i class="fas fa-hands-helping"></i> Volunteer </a>
+  	      </li>
+  	      <li class="nav-item">
+  	        <a class="nav-link title" href="https://www.facebook.com/groups/1322494724470691"><i class="fab fa-facebook-square"></i> Facebook</a> 
+  	      </li>
+  	   <!--    <li class="nav-item">
+  	        <a class="nav-link title" href="#">Instagram</a>
+  	      </li> -->
+          <li class="nav-item">
+            <% if admin_signed_in? %>
+             <%= link_to '<i class="fas fa-tachometer-alt"></i> Dashboard'.html_safe, admins_path, {:class=>'nav-link title'} %>
+          
+            <% end %>
+          </li>
+          <% if current_admin.present? %>
+            <li class="nav-item">
+              <%= link_to '<i class="fas fa-sign-out-alt"></i> Log Out'.html_safe, destroy_admin_session_path, {:class=>'nav-link title', :method=>'delete'} %>
+            </li>
+          <% end %>
+  	    </ul>
+
+  	  </div>
+  	</nav>
+<!--     <span class="notice"><%= notice %></span>
+    <span class="alert"><%= alert %></span> -->
+    <%= yield %>
+    <div id='subfooter'>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-sm-4'>
+            <h5 class='title'><%= link_to '<i class="far fa-thumbs-up"></i> Like Us on Facebook'.html_safe, 'https://www.facebook.com/groups/1322494724470691', :class=>'' %> <br><br>
+              <%= link_to '<i class="fab fa-paypal"></i> Donate on PayPal'.html_safe,'https://www.paypal.me/communityadvocates' %></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+    	<div class='row'>
+    		<div class='col-sm-12 text-center'>
+					© <%= biz_name %> <br>
+					2020 - 2021 All Rights Reserved
+    		</div>
+    	</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<div id='admins_page' class='container'>
+
+	<br>
+
+	<% db_tables.each do |f| %>
+		<%= link_to "Add #{f.to_s.camelcase}", send("new_#{f.downcase.singularize}_path"), :class=>'btn btn-primary' %>
+	<% end %>
+	<br>
+	<br>
+	<table class='table table-sm'>
+		<thead>
+			<% Event.form_field.each do |e| %>
+				<% if e.match(/id/) %>
+					<th>Action</th>
+				<% else %>
+					<th><%= sanitize e %></th>
+				<% end %>
+			<% end %>
+		</thead>
+		<% Event.all.each do |e| %>
+			<tr>
+			<% Event.form_field.each do |f| %>
+				<% if f.match(/id/) %>
+					<td>
+						<%= link_to 'Edit', edit_event_path(id:e.send(f)), :class=>'btn btn-primary btn-sm' %>
+						
+						<%= link_to 'Delete', event_path(id:e.send(f)), {method:'delete', class:'btn btn-danger btn-sm'} %>
+					</td>
+				<% else %>
+					<td><%= sanitize e.send f %></td>
+				<% end %>
+			<% end %>
+
+			</tr>
+		<% end %>
+	</table>
+</div>	
